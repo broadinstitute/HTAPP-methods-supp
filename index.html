@@ -74,7 +74,7 @@
                             Back to table</a>
                     </div>
 
-                    <div style="position:absolute;left:70px;top:30px;z-index: 1;">
+                    <div style="position:absolute;left:70px;top:22px;z-index: 1;">
                         <a id="previous" href="#">
                             <div style="width: 28px;height:32px;display: inline-block;">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -83,7 +83,7 @@
                             </div>
                         </a>
                     </div>
-                    <div style="position:absolute;left:105px;top:30px;z-index: 1;">
+                    <div style="position:absolute;left:105px;top:22px;z-index: 1;">
                         <a id="next" href="#">
                             <div style="width: 28px;height:32px;display: inline-block;">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -93,7 +93,7 @@
                         </a>
                     </div>
                 </div>
-                <div style="position:absolute;left:0;top:-15px;" id="sample-image"></div>
+                <div style="position:absolute;left:0;top:-5px;" id="sample-image"></div>
             </div>
         </div>
     </div>
@@ -387,7 +387,7 @@
             html.push('<td>');
             if (field === "Sample ID") {
                 var prefix = value['Cells or Nuclei'] + '/';
-                var link = prefix + value[field] + '.pdf.png';
+                var link = prefix + value[field] + '.png';
                 html.push('<a class="details-link" data-link="' + link + '" href="image.html?image=' + link + '">');
             }
             html.push(value[field]);
@@ -404,7 +404,7 @@
     function getImageIndex() {
         for (let i = 0; i < json.length; i++) {
             var value = json[i];
-            var link = value['Cells or Nuclei'] + '/' + value['Sample ID'] + '.pdf.png';
+            var link = value['Cells or Nuclei'] + '/' + value['Sample ID'] + '.png';
             if (link === currentImage) {
                 return i;
 
@@ -438,7 +438,7 @@
             }
         }
         var value = json[index];
-        showImage(value['Cells or Nuclei'] + '/' + value['Sample ID'] + '.pdf.png');
+        showImage(value['Cells or Nuclei'] + '/' + value['Sample ID'] + '.png');
     }
 
     var $sampleImage = $('#sample-image');
@@ -450,10 +450,10 @@
         $loading.show();
         $sampleImage.hide();
         $controls.hide();
-
         currentImage = link;
         var $img = $('<img src="' + link + '">');
         $sampleImage.html($img);
+
         $img[0].onload = function () {
             $controls.show();
             $loading.hide();
